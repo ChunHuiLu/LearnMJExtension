@@ -38,7 +38,7 @@
     }
     
     // 是否是数字类型
-    NSString *lowerCode = _code.lowercaseString;
+    NSString *lowerCode = code.lowercaseString;
     NSArray *numberTypes = @[MJPropertyTypeInt,MJPropertyTypeFloat,MJPropertyTypeShort,MJPropertyTypeBOOL1,MJPropertyTypeBOOL2,MJPropertyTypeDouble,MJPropertyTypeChar,MJPropertyTypeLong];
     if ([numberTypes containsObject:lowerCode]) {
         _numberType = YES;

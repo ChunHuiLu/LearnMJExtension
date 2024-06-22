@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 #import "NSObject+Property.h"
+#import "NSObject+keyValue2object.h"
 
 #pragma mark -- 函数声明
 void extcute(void (*fun)(void));
@@ -27,6 +28,8 @@ void extcute(void (*fun)(void)) {
 }
 
 #pragma mark -- 字典转模型
+
+/// 字典转模型（最简单的情况）
 void keyValue2object(void) {
     NSDictionary *dict = @{
         @"name":@"Jack",
@@ -37,5 +40,6 @@ void keyValue2object(void) {
         @"sex":@(SexFemale),
         @"gay":@"1"
     };
-    NSArray *propertyArray = [User properties];
+    User *user = [User objectWithKeyValues:dict];
+    
 }

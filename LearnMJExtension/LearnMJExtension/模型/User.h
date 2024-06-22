@@ -27,6 +27,8 @@ typedef enum {
 @property (nonatomic, assign) Sex sex;
 /** 同性恋 */
 @property (nonatomic, assign, getter=isGay) BOOL gay;
+
+@property (nonatomic, strong) id test;
 @end
 
 NS_ASSUME_NONNULL_END

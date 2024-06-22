@@ -13,6 +13,7 @@
 		30B50E392C26F8E300E85393 /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B50E382C26F8E300E85393 /* MJPropertyType.m */; };
 		30B50E3D2C27049600E85393 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B50E3B2C27049600E85393 /* User.m */; };
 		30B50E402C2704BF00E85393 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B50E3F2C2704BF00E85393 /* MJExtensionConst.m */; };
+		30B50E432C27118F00E85393 /* NSObject+keyValue2object.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B50E422C27118F00E85393 /* NSObject+keyValue2object.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,8 @@
 		30B50E3B2C27049600E85393 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		30B50E3E2C2704BF00E85393 /* MJExtensionConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
 		30B50E3F2C2704BF00E85393 /* MJExtensionConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
+		30B50E412C27118F00E85393 /* NSObject+keyValue2object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+keyValue2object.h"; sourceTree = "<group>"; };
+		30B50E422C27118F00E85393 /* NSObject+keyValue2object.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+keyValue2object.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 			children = (
 				30B50E312C26E4F100E85393 /* NSObject+Property.h */,
 				30B50E322C26E4F100E85393 /* NSObject+Property.m */,
+				30B50E412C27118F00E85393 /* NSObject+keyValue2object.h */,
+				30B50E422C27118F00E85393 /* NSObject+keyValue2object.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				30B50E332C26E4F100E85393 /* NSObject+Property.m in Sources */,
 				308EDF0C2C26CA1F00749B10 /* main.m in Sources */,
 				30B50E402C2704BF00E85393 /* MJExtensionConst.m in Sources */,
+				30B50E432C27118F00E85393 /* NSObject+keyValue2object.m in Sources */,
 				30B50E362C26F85C00E85393 /* MJProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

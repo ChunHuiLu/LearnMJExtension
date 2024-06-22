@@ -22,10 +22,11 @@
         objc_property_t property = properties[i];
 //        NSLog(@"name:%s -- attributes:%s",property_getName(property),property_getAttributes(property));
         MJProperty *propertyObj = [MJProperty propertyWithProperty:property];
-        NSLog(@"%@:%@",propertyObj.type.typeClass,propertyObj.name);
+//        NSLog(@"%@:%@",propertyObj.type.typeClass,propertyObj.name);
+        [propertiesArray addObject:propertyObj];
     }
     
-    return propertiesArray;
+    return propertiesArray.copy;
 }
 
 
