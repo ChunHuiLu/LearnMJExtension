@@ -26,7 +26,7 @@
         MJPropertyType *type = property.type;
         Class typeClass = type.typeClass;
         // 2. 用该属性名作为键去字典中寻找对应的值
-        id value = [keyValues valueForKey:property.name];
+        id value = [keyValues valueForKey:[self.class propertyKey:property.name]];
         if (!value) {continue;}
         // 3.拿到值后将值的类型转换为属性对应的数据类型.
         if (!type.isFromFoundation && typeClass) {
@@ -99,5 +99,13 @@
         }
     }
     return arr.copy;
+}
+
++ (NSString *)propertyKey:(NSString *)propertyName {
+    NSString * key;
+    if ([self respondsToSelector:@selector(replacedKeyFromPropertyName)]) {
+        key = [[self.class replacedKeyFromPropertyName] valueForKey:propertyName];
+    }
+    return key?:propertyName;
 }
 @end

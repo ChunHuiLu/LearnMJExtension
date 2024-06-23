@@ -10,8 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol MJKeyValue <NSObject>
 
+@optional
 + (NSDictionary *)objectClassInArray;
-
++ (NSDictionary*)replacedKeyFromPropertyName;
 @end
 
 @interface NSObject (keyValue2object)

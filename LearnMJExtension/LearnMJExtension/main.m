@@ -12,6 +12,7 @@
 #import "Status.h"
 #import "StatusResult.h"
 #import "Ad.h"
+#import "IDAndDescription.h"
 
 #pragma mark -- 函数声明
 void extcute(void (*fun)(void));
@@ -19,11 +20,12 @@ void keyValue2object(void);
 void keyValues2object1(void);
 void keyValues2object2(void);
 void keyValues2object3(void);
+void keyValues2object4(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        extcute(keyValues2object3);
+        extcute(keyValues2object4);
     }
     return 0;
 }
@@ -141,5 +143,18 @@ void keyValues2object3(void) {
     for (Ad *ad in result.ads) {
         NSLog(@"image=%@, url=%@", ad.image, ad.url);
     }
+    
+}
+
+void keyValues2object4(void){
+    
+    NSDictionary *dict = @{
+                           @"id" : @"Jack",
+                           @"description" : @"lufy.png",
+                           };
+
+    IDAndDescription *result = [IDAndDescription objectWithKeyValues:dict];
+    
+    NSLog(@"%@,%@",result.ID,result.Description);
     
 }
