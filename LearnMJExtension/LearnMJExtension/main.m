@@ -10,17 +10,20 @@
 #import "NSObject+Property.h"
 #import "NSObject+keyValue2object.h"
 #import "Status.h"
+#import "StatusResult.h"
+#import "Ad.h"
 
 #pragma mark -- 函数声明
 void extcute(void (*fun)(void));
 void keyValue2object(void);
 void keyValues2object1(void);
 void keyValues2object2(void);
+void keyValues2object3(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        extcute(keyValues2object2);
+        extcute(keyValues2object3);
     }
     return 0;
 }
@@ -82,5 +85,61 @@ void keyValues2object2(void) {
                                };
     Status * status = [Status objectWithKeyValues:dict];
     NSLog(@"%@",status.description);
+    
+}
+
+void keyValues2object3(void) {
+    NSDictionary *dict = @{
+                               @"statuses" : @[
+                                       @{
+                                           @"text" : @"今天天气真不错！",
+
+                                           @"user" : @{
+                                                   @"name" : @"Rose",
+                                                   @"icon" : @"nami.png"
+                                                   }
+                                           },
+
+                                       @{
+                                           @"text" : @"明天去旅游了",
+
+                                           @"user" : @{
+                                                   @"name" : @"Jack",
+                                                   @"icon" : @"lufy.png"
+                                                   }
+                                           }
+
+                                       ],
+
+                               @"ads" : @[
+                                       @{
+                                           @"image" : @"ad01.png",
+                                           @"url" : @"http://www.小码哥ad01.com"
+                                           },
+                                       @{
+                                           @"image" : @"ad02.png",
+                                           @"url" : @"http://www.小码哥ad02.com"
+                                           }
+                                       ],
+
+                               @"totalNumber" : @"2014",
+                               @"previousCursor" : @"13476589",
+                               @"nextCursor" : @"13476599"
+                               };
+    StatusResult * result = [StatusResult objectWithKeyValues:dict];
+    // 3.打印StatusResult模型的简单属性
+    NSLog(@"totalNumber=%@, previousCursor=%lld, nextCursor=%lld", result.totalNumber, result.previousCursor, result.nextCursor);
+    // 4.打印statuses数组中的模型属性
+    for (Status *status in result.statuses) {
+        NSString *text = status.text;
+        NSString *name = status.user.name;
+        NSString *icon = status.user.icon;
+        NSLog(@"text=%@, name=%@, icon=%@", text, name, icon);
+    }
+    
+    // 5.打印ads数组中的模型属性
+    for (Ad *ad in result.ads) {
+        NSLog(@"image=%@, url=%@", ad.image, ad.url);
+    }
     
 }

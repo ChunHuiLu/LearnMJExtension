@@ -10,6 +10,7 @@
 #import "MJProperty.h"
 #import "MJPropertyType.h"
 
+
 @implementation NSObject (keyValue2object)
 + (instancetype)objectWithKeyValues:(id)keyValues {
     if (!keyValues) {return nil;}
@@ -30,8 +31,19 @@
         // 3.拿到值后将值的类型转换为属性对应的数据类型.
         if (!type.isFromFoundation && typeClass) {
             value = [typeClass objectWithKeyValues:value];
-        } else
-        if (type.isNumberType) {
+        } else if ([self.class respondsToSelector:@selector(objectClassInArray)]) {
+            id objectClass;
+            // 如果的class类型
+            objectClass = [self.class objectClassInArray][property.name];
+            // 如果是NSString类型
+            if ([objectClass isKindOfClass:[NSString class]]) {
+                objectClass = NSClassFromString(objectClass);
+            }
+            // 如果有值，返回一个装了模型的数组
+            if(objectClass) {
+                value = [objectClass objectArrayWithKeyValuesArray:value];
+            }
+        } else if (type.isNumberType) {
             NSString *oldValue = value;
             // 字符串转数字
             if ([value isKindOfClass:[NSString class]]) {
@@ -70,5 +82,22 @@
         foundationObj = [NSJSONSerialization JSONObjectWithData:(NSData *)self options:kNilOptions error:nil];
     }
     return foundationObj?:self;
+}
+
++ (NSArray *)objectArrayWithKeyValuesArray:(id)keyValuesArray {
+    if ([self isClassFromFoundation:self]) {return keyValuesArray;}
+    // 如果是json字符串 转成字典
+    keyValuesArray = [keyValuesArray JSONObject];
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    for (NSDictionary *keyValues in keyValuesArray) {
+        // 转成模型并返回
+        id model;
+        model = [self objectWithKeyValues:keyValues];
+        if (model) {
+            [arr addObject:model];
+        }
+    }
+    return arr.copy;
 }
 @end

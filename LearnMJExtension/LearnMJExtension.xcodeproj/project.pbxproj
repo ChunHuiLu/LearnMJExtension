@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3060AC012C27C8D700EB653F /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 3060AC002C27C8D700EB653F /* Status.m */; };
+		3060AC452C27D3AF00EB653F /* StatusResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3060AC442C27D3AF00EB653F /* StatusResult.m */; };
+		3060AC482C27DB6700EB653F /* Ad.m in Sources */ = {isa = PBXBuildFile; fileRef = 3060AC472C27DB6700EB653F /* Ad.m */; };
 		308EDF0C2C26CA1F00749B10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 308EDF0B2C26CA1F00749B10 /* main.m */; };
 		30B50E332C26E4F100E85393 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B50E322C26E4F100E85393 /* NSObject+Property.m */; };
 		30B50E362C26F85C00E85393 /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B50E352C26F85C00E85393 /* MJProperty.m */; };
@@ -32,6 +34,10 @@
 /* Begin PBXFileReference section */
 		3060ABFF2C27C8D700EB653F /* Status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		3060AC002C27C8D700EB653F /* Status.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		3060AC432C27D3AF00EB653F /* StatusResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusResult.h; sourceTree = "<group>"; };
+		3060AC442C27D3AF00EB653F /* StatusResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusResult.m; sourceTree = "<group>"; };
+		3060AC462C27DB6700EB653F /* Ad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ad.h; sourceTree = "<group>"; };
+		3060AC472C27DB6700EB653F /* Ad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ad.m; sourceTree = "<group>"; };
 		308EDF082C26CA1F00749B10 /* LearnMJExtension */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnMJExtension; sourceTree = BUILT_PRODUCTS_DIR; };
 		308EDF0B2C26CA1F00749B10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		30B50E312C26E4F100E85393 /* NSObject+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
@@ -117,6 +123,10 @@
 				30B50E3B2C27049600E85393 /* User.m */,
 				3060ABFF2C27C8D700EB653F /* Status.h */,
 				3060AC002C27C8D700EB653F /* Status.m */,
+				3060AC432C27D3AF00EB653F /* StatusResult.h */,
+				3060AC442C27D3AF00EB653F /* StatusResult.m */,
+				3060AC462C27DB6700EB653F /* Ad.h */,
+				3060AC472C27DB6700EB653F /* Ad.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -180,11 +190,13 @@
 			files = (
 				30B50E3D2C27049600E85393 /* User.m in Sources */,
 				30B50E392C26F8E300E85393 /* MJPropertyType.m in Sources */,
+				3060AC482C27DB6700EB653F /* Ad.m in Sources */,
 				30B50E332C26E4F100E85393 /* NSObject+Property.m in Sources */,
 				308EDF0C2C26CA1F00749B10 /* main.m in Sources */,
 				30B50E402C2704BF00E85393 /* MJExtensionConst.m in Sources */,
 				30B50E432C27118F00E85393 /* NSObject+keyValue2object.m in Sources */,
 				30B50E362C26F85C00E85393 /* MJProperty.m in Sources */,
+				3060AC452C27D3AF00EB653F /* StatusResult.m in Sources */,
 				3060AC012C27C8D700EB653F /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
