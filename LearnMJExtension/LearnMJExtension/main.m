@@ -25,6 +25,10 @@ void keyValues2object4(void);
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
+        extcute(keyValue2object);
+        extcute(keyValues2object1);
+        extcute(keyValues2object2);
+        extcute(keyValues2object3);
         extcute(keyValues2object4);
     }
     return 0;
@@ -49,7 +53,7 @@ void keyValue2object(void) {
         @"gay":@"1"
     };
     User *user = [User objectWithKeyValues:dict];
-    NSLog(@"name=%@, icon=%@, age=%d", user.name, user.icon, user.age);
+//    NSLog(@"name=%@, icon=%@, age=%d", user.name, user.icon, user.age);
 }
 /**
  *  JSON字符串 -> 模型
@@ -62,7 +66,7 @@ void keyValues2object1(void) {
     User *user = [User objectWithKeyValues:jsonString];
 
     // 3.打印User模型的属性
-    NSLog(@"name=%@, icon=%@, age=%d", user.name, user.icon, user.age);
+//    NSLog(@"name=%@, icon=%@, age=%d", user.name, user.icon, user.age);
 }
 /*
  * 复杂的字典转模型
@@ -86,7 +90,7 @@ void keyValues2object2(void) {
                                        }
                                };
     Status * status = [Status objectWithKeyValues:dict];
-    NSLog(@"%@",status.description);
+//    NSLog(@"%@",status.description);
     
 }
 
@@ -130,18 +134,18 @@ void keyValues2object3(void) {
                                };
     StatusResult * result = [StatusResult objectWithKeyValues:dict];
     // 3.打印StatusResult模型的简单属性
-    NSLog(@"totalNumber=%@, previousCursor=%lld, nextCursor=%lld", result.totalNumber, result.previousCursor, result.nextCursor);
+//    NSLog(@"totalNumber=%@, previousCursor=%lld, nextCursor=%lld", result.totalNumber, result.previousCursor, result.nextCursor);
     // 4.打印statuses数组中的模型属性
     for (Status *status in result.statuses) {
         NSString *text = status.text;
         NSString *name = status.user.name;
         NSString *icon = status.user.icon;
-        NSLog(@"text=%@, name=%@, icon=%@", text, name, icon);
+//        NSLog(@"text=%@, name=%@, icon=%@", text, name, icon);
     }
     
     // 5.打印ads数组中的模型属性
     for (Ad *ad in result.ads) {
-        NSLog(@"image=%@, url=%@", ad.image, ad.url);
+//        NSLog(@"image=%@, url=%@", ad.image, ad.url);
     }
     
 }
@@ -155,6 +159,6 @@ void keyValues2object4(void){
 
     IDAndDescription *result = [IDAndDescription objectWithKeyValues:dict];
     
-    NSLog(@"%@,%@",result.ID,result.Description);
+//    NSLog(@"%@,%@",result.ID,result.Description);
     
 }

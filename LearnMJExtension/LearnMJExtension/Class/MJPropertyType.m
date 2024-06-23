@@ -9,21 +9,26 @@
 #import "MJExtensionConst.h"
 #import "NSObject+Property.h"
 
-
+static NSMutableDictionary * cachedTypes_;
 @implementation MJPropertyType
++ (void)load {
+    cachedTypes_ = [NSMutableDictionary dictionary];
+}
 + (instancetype)propertyTypeWithAttributeString:(NSString *)string {
     return [[MJPropertyType alloc] initWithAttributeString:string];
 }
 
 -(instancetype)initWithAttributeString:(NSString *)attributes {
-    if (self = [super init]) {
-        // 截取属性的类型
-        NSUInteger loc = 1;
-        NSUInteger len = [attributes rangeOfString:@","].location - loc;
-        NSString *typeCode = [attributes substringWithRange:NSMakeRange(loc, len)];
-//        NSLog(@"%@",typeCode);
+    // 截取属性的类型
+    NSUInteger loc = 1;
+    NSUInteger len = [attributes rangeOfString:@","].location - loc;
+    NSString *typeCode = [attributes substringWithRange:NSMakeRange(loc, len)];
+    if (!cachedTypes_[typeCode]) {
+        self = [super init];
+        NSLog(@"%@",typeCode);
         // 处理typeCode，根据typeCode推断出属性类型
         [self getTypeCode:typeCode];
+        cachedTypes_[typeCode] = self;
     }
     return self;
 }

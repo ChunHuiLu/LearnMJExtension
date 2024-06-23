@@ -12,22 +12,32 @@
 
 @implementation NSObject (Property)
 static NSSet *foundationClasses_;
+static NSMutableDictionary *cachedProperties_;
++ (void)load {
+    cachedProperties_ = [NSMutableDictionary dictionary];
+}
 
 + (NSArray * )properties {
     
-    // 1.获得所有的属性
-    unsigned int outCount = 0;
-    objc_property_t *properties = class_copyPropertyList(self, &outCount);
-    NSMutableArray *propertiesArray = [NSMutableArray arrayWithCapacity:outCount];
-    for (int i = 0; i < outCount; i++) {
-        objc_property_t property = properties[i];
-//        NSLog(@"name:%s -- attributes:%s",property_getName(property),property_getAttributes(property));
-        MJProperty *propertyObj = [MJProperty propertyWithProperty:property];
-//        NSLog(@"%@:%@",propertyObj.type.typeClass,propertyObj.name);
-        [propertiesArray addObject:propertyObj];
+    NSMutableArray * cachedProperties = cachedProperties_[NSStringFromClass(self)];
+    if (!cachedProperties) {
+//        NSLog(@"%@调用了properties方法",[self class]);
+        // 1.获得所有的属性
+        unsigned int outCount = 0;
+        objc_property_t *properties = class_copyPropertyList(self, &outCount);
+        cachedProperties = [NSMutableArray arrayWithCapacity:outCount];
+        for (int i = 0; i < outCount; i++) {
+            objc_property_t property = properties[i];
+    //        NSLog(@"name:%s -- attributes:%s",property_getName(property),property_getAttributes(property));
+            MJProperty *propertyObj = [MJProperty propertyWithProperty:property];
+    //        NSLog(@"%@:%@",propertyObj.type.typeClass,propertyObj.name);
+            [cachedProperties addObject:propertyObj];
+        }
+        free(properties);
+        [cachedProperties_ setValue:cachedProperties forKey:NSStringFromClass(self)];
     }
     
-    return propertiesArray.copy;
+    return cachedProperties.copy;
 }
 
 + (NSSet *)foundationClasses {
