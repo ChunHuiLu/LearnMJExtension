@@ -11,6 +11,7 @@
 #import "MJPropertyType.h"
 
 @implementation NSObject (Property)
+static NSSet *foundationClasses_;
 
 + (NSArray * )properties {
     
@@ -29,6 +30,32 @@
     return propertiesArray.copy;
 }
 
++ (NSSet *)foundationClasses {
+    if (!foundationClasses_) {
+        foundationClasses_ = [NSSet setWithObjects:
+                              [NSURL class],
+                              [NSDate class],
+                              [NSValue class],
+                              [NSData class],
+                              [NSArray class],
+                              [NSDictionary class],
+                              [NSString class],
+                              [NSAttributedString class], nil];
+    }
+    return foundationClasses_;
+}
+
++ (BOOL)isClassFromFoundation:(Class)c {
+    if (c == [NSObject class]) {return YES;}
+    __block BOOL result = NO;
+    [[self foundationClasses] enumerateObjectsUsingBlock:^(Class obj, BOOL * _Nonnull stop) {
+        if ([c isSubclassOfClass:obj]) {
+            result = YES;
+            *stop = YES;
+        }
+    }];
+    return result;
+}
 
 
 @end

@@ -9,16 +9,18 @@
 #import "User.h"
 #import "NSObject+Property.h"
 #import "NSObject+keyValue2object.h"
+#import "Status.h"
 
 #pragma mark -- 函数声明
 void extcute(void (*fun)(void));
 void keyValue2object(void);
 void keyValues2object1(void);
+void keyValues2object2(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        extcute(keyValues2object1);
+        extcute(keyValues2object2);
     }
     return 0;
 }
@@ -56,4 +58,29 @@ void keyValues2object1(void) {
 
     // 3.打印User模型的属性
     NSLog(@"name=%@, icon=%@, age=%d", user.name, user.icon, user.age);
+}
+/*
+ * 复杂的字典转模型
+ */
+void keyValues2object2(void) {
+    NSDictionary *dict = @{
+                               @"text" : @"是啊，今天天气确实不错！",
+
+                               @"user" : @{
+                                       @"name" : @"Jack",
+                                       @"icon" : @"lufy.png"
+                                       },
+
+                               @"retweetedStatus" : @{
+                                       @"text" : @"今天天气真不错！",
+
+                                       @"user" : @{
+                                               @"name" : @"Rose",
+                                               @"icon" : @"nami.png"
+                                               }
+                                       }
+                               };
+    Status * status = [Status objectWithKeyValues:dict];
+    NSLog(@"%@",status.description);
+    
 }

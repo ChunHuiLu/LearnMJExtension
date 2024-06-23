@@ -28,6 +28,9 @@
         id value = [keyValues valueForKey:property.name];
         if (!value) {continue;}
         // 3.拿到值后将值的类型转换为属性对应的数据类型.
+        if (!type.isFromFoundation && typeClass) {
+            value = [typeClass objectWithKeyValues:value];
+        } else
         if (type.isNumberType) {
             NSString *oldValue = value;
             // 字符串转数字

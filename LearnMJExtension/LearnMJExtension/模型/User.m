@@ -9,5 +9,7 @@
 
 
 @implementation User
-
+- (NSString *)description {
+    return [[NSString alloc] initWithFormat:@"name=%@, icon=%@, age=%u, height=%@, money=%@, sex=%d, gay=%d", self.name, self.icon, self.age, self.height, self.money, self.sex, self.gay];
+}
 @end

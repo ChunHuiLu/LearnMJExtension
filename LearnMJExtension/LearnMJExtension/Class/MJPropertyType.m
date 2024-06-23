@@ -7,6 +7,8 @@
 
 #import "MJPropertyType.h"
 #import "MJExtensionConst.h"
+#import "NSObject+Property.h"
+
 
 @implementation MJPropertyType
 + (instancetype)propertyTypeWithAttributeString:(NSString *)string {
@@ -33,8 +35,9 @@
         // 去掉@" 和" 截取中间的类型名称
         _code = [code substringWithRange:NSMakeRange(2, code.length - 3)];
         _typeClass = NSClassFromString(_code);
-        
         _numberType = (_typeClass == [NSNumber class] || [_typeClass isSubclassOfClass:[NSNumber class]]);
+        // 判断是否是模型类
+        _fromFoundation = [NSObject isClassFromFoundation:_typeClass];
     }
     
     // 是否是数字类型
